@@ -6,13 +6,13 @@
 - Add a  record in /etc/hosts :
 
 ```127.0.0.1    slotagrator.com```
-- Execute ```docker-compose up -d```
+- Execute docker-compose up -d
 - ```docker-compose exec api composer install```
 - Set up database schema ```docker-compose exec api php bin/doctrine orm:schema:update --force```
 
 
 ### What is working so far
-- PlayAction is not finished but it still can be executed just to see that request handler, routing and dependency injection works
+- PlayAction (http://slotegrator.com:8080/play) is not finished but it still can be executed just to see that request handler, routing and dependency injection works
 - LoadTestAction to check concurrent load: ```ab -k -c 500 -n 10000 http://slotegrator.com:8080/load-test```
 
 
