@@ -16,9 +16,21 @@ $errorResponseGenerator = function (Throwable $e) {
     return $generator($e, new ServerRequest(), new Response());
 };
 
-$routes = include  __DIR__ . '/../config/routes.php';
+$routes = include __DIR__ . '/../config/routes.php';
+
+
+$builder = new DI\ContainerBuilder();
+$builder->addDefinitions([
+    'em' => function (Psr\Container\ContainerInterface $c) {
+        $factory = new \OlZyuzinFramework\EntityManagerFactory();
+        $em = $factory->create();
+        return $em;
+    }
+]);
+$container = $builder->build();
+
 $handler = new RequestHandler(
-    new DI\Container(),
+    $container,
     new Router($routes),
 );
 
