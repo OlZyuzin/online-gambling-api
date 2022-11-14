@@ -17,8 +17,8 @@ class PrizeGenerationHandler
 
     public function handle(int $userId): Prize
     {
-        return new Prize();
+        $prize = $this->prizeScoreGenerationHandler->handle($userId);
+
+        return $prize;
     }
-
-
 }

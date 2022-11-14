@@ -3,10 +3,11 @@
 namespace OlZyuzin\Models;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'users')]
-class User
+class User implements JsonSerializable
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
@@ -15,4 +16,12 @@ class User
 
     #[ORM\Column(type: 'string', nullable: false, unique: true)]
     public string $email;
+
+    public function jsonSerialize()
+    {
+        return array(
+            'id' => $this->id,
+        );
+    }
+
 }

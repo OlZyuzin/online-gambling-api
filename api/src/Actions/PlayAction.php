@@ -22,12 +22,10 @@ class PlayAction implements ActionInterface
 
     public function perform(RequestInterface $request): ResponseInterface
     {
-        var_dump($this->prizeGenerationHandler);
-        return new JsonResponse([
-            'data' => [
-                'status' => 'success',
-                'route' => 'play',
-            ]
-        ]);
+        $userId = 1;
+
+        $prize = $this->prizeGenerationHandler->handle($userId);
+
+        return new JsonResponse($prize);
     }
 }

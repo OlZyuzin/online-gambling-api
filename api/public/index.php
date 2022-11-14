@@ -20,12 +20,13 @@ $routes = include __DIR__ . '/../config/routes.php';
 
 
 $builder = new DI\ContainerBuilder();
+$builder->useAutowiring(true);
 $builder->addDefinitions([
-    'em' => function (Psr\Container\ContainerInterface $c) {
+    \Doctrine\ORM\EntityManagerInterface::class => function (Psr\Container\ContainerInterface $c) {
         $factory = new \OlZyuzinFramework\EntityManagerFactory();
         $em = $factory->create();
         return $em;
-    }
+    },
 ]);
 $container = $builder->build();
 
