@@ -16,9 +16,11 @@ class PrizeScoreGenerationHandler
     ) {
     }
 
-    public function handle($userId): PrizeScore
+    public function handle(int $userId, ?int $score = null): PrizeScore
     {
-        $score = random_int(1, $this->maxScore);
+        if (!$score) {
+            $score = random_int(1, $this->maxScore);
+        }
 
         $prize = new PrizeScore();
         $prize->amount = $score;

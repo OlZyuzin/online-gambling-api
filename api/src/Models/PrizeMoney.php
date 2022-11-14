@@ -10,4 +10,17 @@ class PrizeMoney extends Prize
 {
     #[ORM\Column(type: 'integer', nullable: false)]
     public int $amount;
+
+    public function getType(): PrizeType
+    {
+        return PrizeType::Money;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $data = parent::jsonSerialize();
+        $data['amount'] = $this->amount;
+
+        return $data;
+    }
 }
