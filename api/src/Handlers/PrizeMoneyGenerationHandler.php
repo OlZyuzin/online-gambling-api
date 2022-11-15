@@ -7,7 +7,7 @@ use OlZyuzin\Models\PrizeMoney;
 use OlZyuzin\Models\PrizeScore;
 use OlZyuzin\Models\User;
 
-class PrizeMoneyGenerationHandler
+class PrizeMoneyGenerationHandler implements PrizeGenerationHandlerInterface
 {
     private int $amountOfMoneyLeft = 1000;
     private int $max = 1000;

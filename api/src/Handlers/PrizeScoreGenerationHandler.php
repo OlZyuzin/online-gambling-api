@@ -7,7 +7,7 @@ use OlZyuzin\Models\PrizeScore;
 use OlZyuzin\Models\User;
 use OlZyuzin\Reposotories\UserRepositoryInterface;
 
-class PrizeScoreGenerationHandler
+class PrizeScoreGenerationHandler implements PrizeGenerationHandlerInterface
 {
     private int $maxScore = 1000;
 
