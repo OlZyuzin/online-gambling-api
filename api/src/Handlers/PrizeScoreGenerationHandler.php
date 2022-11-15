@@ -2,10 +2,10 @@
 
 namespace OlZyuzin\Handlers;
 
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use OlZyuzin\Models\PrizeScore;
 use OlZyuzin\Models\User;
+use OlZyuzin\Reposotories\UserRepositoryInterface;
 
 class PrizeScoreGenerationHandler
 {
@@ -13,6 +13,7 @@ class PrizeScoreGenerationHandler
 
     public function __construct(
         private EntityManagerInterface $em,
+        private UserRepositoryInterface $userRepository,
     ) {
     }
 
@@ -22,12 +23,22 @@ class PrizeScoreGenerationHandler
             $score = random_int(1, $this->maxScore);
         }
 
+        $user = $this->userRepository->findUser($userId);
+        $user->score += $score;
+        $prize = $this->createPrize($score, $user);
+
+        $this->em->flush();
+
+        return $prize;
+    }
+
+    private function createPrize(int $score, User $user): PrizeScore
+    {
         $prize = new PrizeScore();
         $prize->amount = $score;
-        $prize->user = $this->em->getReference(User::class, $userId);
+        $prize->user = $user;
 
         $this->em->persist($prize);
-        $this->em->flush();
 
         return $prize;
     }

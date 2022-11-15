@@ -27,6 +27,7 @@ $builder->addDefinitions([
         $em = $factory->create();
         return $em;
     },
+    \OlZyuzin\Reposotories\UserRepositoryInterface::class => \DI\get(\OlZyuzin\Reposotories\UserRepository::class)
 ]);
 $container = $builder->build();
 
