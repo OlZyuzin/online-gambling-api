@@ -18,13 +18,27 @@ class User implements JsonSerializable
     public string $email;
 
     #[ORM\Column(type: 'integer', nullable: false)]
-    public int $score = 0;
+    private int $score = 0;
+
+    #[ORM\Column(type: 'integer', nullable: false)]
+    private int $balance = 0;
+
+    public function topUpBalance(int $amount): void
+    {
+        $this->balance += $amount;
+    }
+
+    public function topUpScore(int $amount): void
+    {
+        $this->score += $amount;
+    }
 
     public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,
             'score' => $this->score,
+            'balance' => $this->balance,
         ];
     }
 }

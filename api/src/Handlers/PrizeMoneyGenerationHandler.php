@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use OlZyuzin\Models\PrizeMoney;
 use OlZyuzin\Models\PrizeScore;
 use OlZyuzin\Models\User;
+use OlZyuzin\Reposotories\UserRepositoryInterface;
 
 class PrizeMoneyGenerationHandler implements PrizeGenerationHandlerInterface
 {
@@ -16,6 +17,7 @@ class PrizeMoneyGenerationHandler implements PrizeGenerationHandlerInterface
     public function __construct(
         private EntityManagerInterface $em,
         private PrizeScoreGenerationHandler $prizeScoreGenerationHandler,
+        private UserRepositoryInterface $userRepository,
     ) {
     }
 
@@ -29,12 +31,20 @@ class PrizeMoneyGenerationHandler implements PrizeGenerationHandlerInterface
             return $prize;
         }
 
-        $prize = new PrizeMoney();
-        $prize->amount = $money;
-        $prize->user = $this->em->getReference(User::class, $userId);
-
-        $this->em->persist($prize);
+        $user = $this->userRepository->findUser($userId);
+        $user->topUpBalance($money);
+        $prize = $this->createPrize($money, $user);
         $this->em->flush();
+
+        return $prize;
+    }
+
+    private function createPrize(int $amount, User $user): PrizeMoney
+    {
+        $prize = new PrizeMoney();
+        $prize->amount = $amount;
+        $prize->user = $user;
+        $this->em->persist($prize);
 
         return $prize;
     }

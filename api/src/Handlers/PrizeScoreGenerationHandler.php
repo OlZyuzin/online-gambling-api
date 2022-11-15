@@ -24,7 +24,7 @@ class PrizeScoreGenerationHandler implements PrizeGenerationHandlerInterface
         }
 
         $user = $this->userRepository->findUser($userId);
-        $user->score += $score;
+        $user->topUpScore($score);
         $prize = $this->createPrize($score, $user);
 
         $this->em->flush();
