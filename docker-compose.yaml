@@ -7,6 +7,8 @@ services:
     volumes:
       - './docker/api/slotegrator.conf:/etc/nginx/conf.d/slotegrator.conf'
       - './api:/usr/share/nginx/slotegrator'
+    env_file:
+      - api.env
     ports:
       - 8080:80
 

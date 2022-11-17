@@ -2,3 +2,4 @@
 .idea
 api/vendor
 db
+api.env
