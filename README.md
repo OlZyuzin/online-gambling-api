@@ -11,6 +11,7 @@
 - Define parameters in file api.env . Required parameters can be checked in api.env.example
 - ```docker-compose exec api composer install```
 - Set up database schema ```docker-compose exec api php bin/doctrine orm:schema:update --force```
+- Initiate application settings: ```docker-compose exec api php bin/initateSettings.php```
 
 
 ### What is working so far

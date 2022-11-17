@@ -5,22 +5,25 @@ namespace OlZyuzin\Handlers;
 use Doctrine\ORM\EntityManagerInterface;
 use OlZyuzin\Models\PrizeScore;
 use OlZyuzin\Models\User;
+use OlZyuzin\Reposotories\SettingRepositoryInterface;
 use OlZyuzin\Reposotories\UserRepositoryInterface;
 
 class PrizeScoreGenerationHandler implements PrizeGenerationHandlerInterface
 {
-    private int $maxScore = 1000;
-
     public function __construct(
         private EntityManagerInterface $em,
         private UserRepositoryInterface $userRepository,
+        private SettingRepositoryInterface $settingRepository,
     ) {
     }
 
     public function handle(int $userId, ?int $score = null): PrizeScore
     {
         if (!$score) {
-            $score = random_int(1, $this->maxScore);
+            $score = random_int(
+                1,
+                $this->settingRepository->findMaxScore()
+            );
         }
 
         $user = $this->userRepository->findUser($userId);
