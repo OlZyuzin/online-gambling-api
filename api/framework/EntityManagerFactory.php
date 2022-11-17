@@ -8,26 +8,27 @@ use Doctrine\ORM\ORMSetup;
 
 class EntityManagerFactory
 {
+    public function __construct(
+        private string $dbName,
+        private string $dbUser,
+        private string $dbPassword,
+        private string $dbHost,
+    )
+    {
+    }
+
     public function create(): EntityManagerInterface
     {
-        // Create a simple "default" Doctrine ORM configuration for Annotations
-        $isDevMode = true;
-        $proxyDir = null;
-        $cache = null;
-        $useSimpleAnnotationReader = false;
-        $config = ORMSetup::createAnnotationMetadataConfiguration(
-            [__DIR__ . "/../src/Models"],
-            $isDevMode,
-            $proxyDir,
-            $cache,
-            $useSimpleAnnotationReader
+        $config = ORMSetup::createAttributeMetadataConfiguration(
+            paths: [__DIR__ . "/../src/Models"],
+            isDevMode: true,
         );
 
         $conn = [
-            'dbname' => 'slotagator',
-            'user' => 'slotagator',
-            'password' => 'slotagator',
-            'host' => 'db',
+            'dbname' => $this->dbName,
+            'user' => $this->dbUser,
+            'password' => $this->dbPassword,
+            'host' => $this->dbHost,
             'driver' => 'pdo_mysql',
         ];
 
