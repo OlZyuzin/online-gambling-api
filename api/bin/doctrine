@@ -6,8 +6,13 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
-$factory = new \OlZyuzinFramework\EntityManagerFactory();
-$em = $factory->create();
+$builder = new DI\ContainerBuilder();
+$builder->useAutowiring(true);
+$builder->addDefinitions(__DIR__ . '/../config/parameters.php');
+$builder->addDefinitions(__DIR__ . '/../config/services.php');
+$container = $builder->build();
+
+$em = $container->get(\Doctrine\ORM\EntityManagerInterface::class);
 
 ConsoleRunner::run(
     new SingleManagerProvider($em)
