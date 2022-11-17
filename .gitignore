@@ -3,3 +3,4 @@
 api/vendor
 db
 api.env
+db.env

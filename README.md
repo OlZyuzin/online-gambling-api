@@ -7,7 +7,8 @@
 
 ```127.0.0.1    slotagrator.com```
 - Execute docker-compose up -d
-- Define parameters in file api.env . Possible parameters can be checked in api.env.example
+- Define parameters in file db.env . Required parameters can be checked in db.env.example
+- Define parameters in file api.env . Required parameters can be checked in api.env.example
 - ```docker-compose exec api composer install```
 - Set up database schema ```docker-compose exec api php bin/doctrine orm:schema:update --force```
 

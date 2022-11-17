@@ -14,11 +14,7 @@ services:
 
   db:
     image: mysql:8
-    environment:
-      - MYSQL_DATABASE=slotagator
-      - MYSQL_USER=slotagator
-      - MYSQL_PASSWORD=slotagator
-      - MYSQL_ROOT_PASSWORD=rootpass
+    env_file: db.env
     ports:
       - 3306:3306
     volumes:
