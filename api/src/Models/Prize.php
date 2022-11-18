@@ -8,7 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity]
 #[ORM\InheritanceType('JOINED')]
 #[ORM\DiscriminatorColumn(name: 'type', type: 'string')]
-#[ORM\DiscriminatorMap(['score' => PrizeScore::class, 'money' => PrizeMoney::class])]
+#[ORM\DiscriminatorMap([
+    'score' => PrizeScore::class,
+    'money' => PrizeMoney::class,
+    'thing' => PrizeThing::class,
+])]
 abstract class Prize implements \JsonSerializable
 {
     #[ORM\Id]
