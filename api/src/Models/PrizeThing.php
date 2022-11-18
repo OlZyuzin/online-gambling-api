@@ -23,6 +23,7 @@ class PrizeThing extends Prize implements \JsonSerializable
     {
         $data = parent::jsonSerialize();
         $data['thing'] = $this->thing;
+        $data['status'] = $this->status;
 
         return $data;
     }

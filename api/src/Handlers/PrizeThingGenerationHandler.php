@@ -2,19 +2,52 @@
 
 namespace OlZyuzin\Handlers;
 
-use OlZyuzin\Models\Prize;
+use Doctrine\ORM\EntityManagerInterface;
+use OlZyuzin\Models\PrizeScore;
+use OlZyuzin\Models\PrizeThing;
 use OlZyuzin\Models\Thing;
+use OlZyuzin\Models\User;
 use OlZyuzin\Reposotories\ThingRepositoryInterface;
+use OlZyuzin\Reposotories\UserRepositoryInterface;
 
 class PrizeThingGenerationHandler implements PrizeGenerationHandlerInterface
 {
     public function __construct(
-      private ThingRepositoryInterface $thingRepository,
-    ){
+        private EntityManagerInterface $em,
+        private PrizeScoreGenerationHandler $prizeScoreGenerationHandler,
+        private ThingRepositoryInterface $thingRepository,
+        private UserRepositoryInterface  $userRepository,
+    )
+    {
     }
 
-    public function handle(int $userId): Prize
+    public function handle(int $userId): PrizeThing|PrizeScore
     {
+        $thing = $this->getRandomThing();
+
+        if (!$thing) {
+            $prize = $this->prizeScoreGenerationHandler->handle($userId);
+            return $prize;
+        }
+
+        $thing->incrementReservedCount();
+        $user = $this->userRepository->findUser($userId);
+        $prize = $this->createPrize($user, $thing);
+        $this->em->flush();
+
+        return $prize;
+    }
+
+    private function createPrize(
+        User $user,
+        Thing $thing,
+    ): PrizeThing {
+        $prize = new PrizeThing();
+        $prize->thing = $thing;
+        $prize->user = $user;
+        $this->em->persist($prize);
+
+        return $prize;
     }
 
     /**

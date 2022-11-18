@@ -16,7 +16,7 @@ class PrizeGenerationHandler implements PrizeGenerationHandlerInterface
     ) {
         $this->prizeHandlers[] = $prizeScoreGenerationHandler;
         $this->prizeHandlers[] = $prizeMoneyGenerationHandler;
-//        $this->prizeHandlers[] = $prizeThingGenerationHandler;
+        $this->prizeHandlers[] = $prizeThingGenerationHandler;
     }
 
     public function handle(int $userId): Prize

@@ -20,7 +20,7 @@ class Thing
     public int $count;
 
     #[ORM\Column(type: 'integer')]
-    public int $reservedCount = 0;
+    private int $reservedCount = 0;
 
     #[ORM\Column(type: 'integer')]
     public int $scoreEquivalent;
@@ -28,5 +28,10 @@ class Thing
     public function getAvailableCount(): int
     {
         return $this->count - $this->reservedCount;
+    }
+
+    public function incrementReservedCount(): void
+    {
+        $this->reservedCount++;
     }
 }
