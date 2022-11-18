@@ -10,8 +10,11 @@ use OlZyuzin\Reposotories\UserRepositoryInterface;
 
 class PrizeMoneyGenerationHandler implements PrizeGenerationHandlerInterface
 {
+    // TODO fix this hardcode; This value probably should retrieved from bank API
     private int $amountOfMoneyLeft = 1000;
+    // TODO get from settings
     private int $max = 1000;
+    // TODO get from settings
     private float $moneyToScoreRatio = 1.5;
 
     public function __construct(
@@ -32,6 +35,7 @@ class PrizeMoneyGenerationHandler implements PrizeGenerationHandlerInterface
         }
 
         $user = $this->userRepository->findUser($userId);
+        // TODO top up should happen via dedicated service which would handle with some bank API
         $user->topUpBalance($money);
         $prize = $this->createPrize($money, $user);
         $this->em->flush();
