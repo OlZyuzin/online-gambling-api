@@ -3,6 +3,8 @@
 use Doctrine\ORM\EntityManagerInterface;
 use OlZyuzin\Reposotories\SettingRepository;
 use OlZyuzin\Reposotories\SettingRepositoryInterface;
+use OlZyuzin\Reposotories\ThingRepository;
+use OlZyuzin\Reposotories\ThingRepositoryInterface;
 use OlZyuzin\Reposotories\UserRepository;
 use OlZyuzin\Reposotories\UserRepositoryInterface;
 use OlZyuzinFramework\EntityManagerFactory;
@@ -22,5 +24,6 @@ return [
         return $em;
     },
     UserRepositoryInterface::class => get(UserRepository::class),
-    SettingRepositoryInterface::class => get(SettingRepository::class)
+    SettingRepositoryInterface::class => get(SettingRepository::class),
+    ThingRepositoryInterface::class => get(ThingRepository::class)
 ];

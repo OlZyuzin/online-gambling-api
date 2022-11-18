@@ -20,5 +20,13 @@ class Thing
     public int $count;
 
     #[ORM\Column(type: 'integer')]
+    public int $reservedCount = 0;
+
+    #[ORM\Column(type: 'integer')]
     public int $scoreEquivalent;
+
+    public function getAvailableCount(): int
+    {
+        return $this->count - $this->reservedCount;
+    }
 }
