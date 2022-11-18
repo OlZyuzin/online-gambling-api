@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Doctrine\ORM\EntityManagerInterface;
-use OlZyuzin\Models\Setting;
+use OlZyuzin\Models\Thing;
 
 $builder = new DI\ContainerBuilder();
 $builder->useAutowiring(true);
@@ -17,7 +17,7 @@ echo 'Starting script execution' . PHP_EOL;
 
 // maximum score that could be generated
 
-createSetting(
+createEntity(
     $em,
     'max-score',
     '1000',
@@ -34,11 +34,11 @@ function createSetting(
     string $type,
 ) {
     echo 'Initiate ' . $name . '  setting' . PHP_EOL;
-    $maxScore = new Setting();
-    $maxScore->name = $name;
-    $maxScore->value = $value;
-    $maxScore->type = $type;
-    $em->persist($maxScore);
+    $setting = new Thing();
+    $setting->name = $name;
+    $setting->value = $value;
+    $setting->type = $type;
+    $em->persist($setting);
 
     try {
         $em->flush();
