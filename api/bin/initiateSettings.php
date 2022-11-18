@@ -14,7 +14,6 @@ $container = $builder->build();
 $em = $container->get(EntityManagerInterface::class);
 
 echo 'Starting script execution' . PHP_EOL;
-echo PHP_EOL;
 
 // maximum score that could be generated
 
@@ -26,7 +25,7 @@ createSetting(
 );
 
 
-echo 'Initiation of settings is finished';
+echo 'Initiation of settings is finished' . PHP_EOL;
 
 function createSetting(
     EntityManagerInterface $em,
@@ -34,16 +33,16 @@ function createSetting(
     string $value,
     string $type,
 ) {
-    echo 'Initiate max-score setting' . PHP_EOL;
+    echo 'Initiate ' . $name . '  setting' . PHP_EOL;
     $maxScore = new Setting();
-    $maxScore->name = 'max-score';
-    $maxScore->value = '1000';
-    $maxScore->type = 'int';
+    $maxScore->name = $name;
+    $maxScore->value = $value;
+    $maxScore->type = $type;
     $em->persist($maxScore);
 
     try {
         $em->flush();
     } catch (Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
-        echo 'max-score already initialized' . PHP_EOL;
+        echo $name . ' already initialized' . PHP_EOL;
     }
 }
