@@ -13,6 +13,11 @@
 - Set up database schema ```docker-compose exec api php bin/doctrine orm:schema:update --force```
 - Initiate application settings: ```docker-compose exec api php bin/initateSettings.php```
 
+#### Dev/test environment configuration
+
+- Bootstrap db with test data:
+```docker-compose exec api php tests/bin/bootstrapThingsTable.php```
+
 
 ### What is working so far
 - PlayAction (http://slotegrator.com:8080/play) is not finished but it still can be executed just to see that request handler, routing and dependency injection works
