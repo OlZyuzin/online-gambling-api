@@ -9,14 +9,18 @@ class Router
     ) {
     }
 
-    public function getActionClass($path): string
+    public function getActionFqcn($path, $httpMethod): string
     {
-        if (isset($this->routes[$path])) {
-            $result = $this->routes[$path];
-        } else {
-            $result = NotFoundAction::class;
+        if (!isset($this->routes[$path])) {
+            return NotFoundAction::class;
+        }
+        /** @var Route $route */
+        $route = $this->routes[$path];
+
+        if ($route->httpMethod !== strtolower($httpMethod)) {
+            return MethodNotAllowedAction::class;
         }
 
-        return $result;
+        return $route->actionFqcn;
     }
 }

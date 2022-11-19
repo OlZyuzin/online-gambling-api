@@ -42,7 +42,6 @@
 ### TODO
 - Add swagger yaml docs and add  swagger-ui in docker compose services (https://hub.docker.com/r/swaggerapi/swagger-ui)
 - Implement security mechanism
-- Routing by HTTP method
 - Passing parameters via api/.env (eg. db credentials)
 - Add symfony console component for implementing required commands
 - run code sniffer to check compliance with PSR-12

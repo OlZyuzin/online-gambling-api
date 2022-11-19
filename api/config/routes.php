@@ -2,8 +2,15 @@
 
 use OlZyuzin\Actions\LoadTestAction;
 use OlZyuzin\Actions\PlayAction;
+use OlZyuzinFramework\Route;
 
 return [
-  '/load-test' => LoadTestAction::class,
-    '/play' => PlayAction::class,
+    '/api/load-test' => new Route(
+        LoadTestAction::class,
+        'get'
+    ),
+    '/api/play' => new Route(
+        PlayAction::class,
+        'post'
+    ),
 ];

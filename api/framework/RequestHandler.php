@@ -2,9 +2,7 @@
 
 namespace OlZyuzinFramework;
 
-use OlZyuzin\Actions\Test1Action;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\RequestInterface;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -21,8 +19,8 @@ class RequestHandler implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $path = $request->getUri()->getPath();
-
-        $actionClass = $this->router->getActionClass($path);
+        $httpMethod = $request->getMethod();
+        $actionClass = $this->router->getActionFqcn($path, $httpMethod);
 
         $action = $this->container->get($actionClass);
         if (!$action->checkAuthorized($request)) {
