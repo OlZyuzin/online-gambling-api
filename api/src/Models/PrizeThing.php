@@ -12,11 +12,11 @@ class PrizeThing extends Prize implements \JsonSerializable
     public Thing $thing;
 
     #[ORM\Column(type: 'string', enumType: PrizeThingStatus::class)]
-    public PrizeThingStatus $status = PrizeThingStatus::PENDING;
+    private PrizeThingStatus $status = PrizeThingStatus::PENDING;
 
     public function getType(): PrizeType
     {
-        return PrizeType::Score;
+        return PrizeType::Thing;
     }
 
     public function jsonSerialize(): mixed
@@ -26,5 +26,13 @@ class PrizeThing extends Prize implements \JsonSerializable
         $data['status'] = $this->status;
 
         return $data;
+    }
+
+    public function setStatus(PrizeThingStatus $status): void
+    {
+        if (!PrizeThingStatus::isChangeAllowed($this->status, $status)) {
+            return;
+        }
+        $this->status = $status;
     }
 }

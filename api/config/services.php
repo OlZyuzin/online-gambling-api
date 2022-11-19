@@ -1,6 +1,8 @@
 <?php
 
 use Doctrine\ORM\EntityManagerInterface;
+use OlZyuzin\Reposotories\PrizeRepository;
+use OlZyuzin\Reposotories\PrizeRepositoryInterface;
 use OlZyuzin\Reposotories\SettingRepository;
 use OlZyuzin\Reposotories\SettingRepositoryInterface;
 use OlZyuzin\Reposotories\ThingRepository;
@@ -25,5 +27,6 @@ return [
     },
     UserRepositoryInterface::class => get(UserRepository::class),
     SettingRepositoryInterface::class => get(SettingRepository::class),
-    ThingRepositoryInterface::class => get(ThingRepository::class)
+    ThingRepositoryInterface::class => get(ThingRepository::class),
+    PrizeRepositoryInterface::class => get(PrizeRepository::class),
 ];
