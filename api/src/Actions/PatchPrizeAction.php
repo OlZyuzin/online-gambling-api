@@ -7,7 +7,7 @@ use Laminas\Diactoros\Response\JsonResponse;
 use OlZyuzin\Handlers\PatchPrizeHandler;
 use OlZyuzin\Models\PrizeThing;
 use OlZyuzin\Reposotories\PrizeRepositoryInterface;
-use OlZyuzin\Representation\Requests\PatchPrizeThingDto;
+use OlZyuzin\Representation\Requests\PatchPrizeThingReqest;
 use OlZyuzinFramework\ActionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -31,7 +31,7 @@ class PatchPrizeAction implements ActionInterface
         $prizeId = (int) $qp['id'];
 
         $json = $request->getBody()->getContents();
-        $dto = PatchPrizeThingDto::initFromJson($json);
+        $dto = PatchPrizeThingReqest::initFromJson($json);
 
         $prize = $this->patchPrizeHandler->handle($prizeId, $dto);
 

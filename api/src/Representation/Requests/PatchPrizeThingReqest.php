@@ -4,7 +4,7 @@ namespace OlZyuzin\Representation\Requests;
 
 use OlZyuzin\Models\PrizeThingStatus;
 
-class PatchPrizeThingDto
+class PatchPrizeThingReqest
 {
     public function __construct(
         public ?PrizeThingStatus $status,
@@ -18,7 +18,7 @@ class PatchPrizeThingDto
         $data = $data['data'];
         $status = $data['status'];
         $statusEnum = PrizeThingStatus::tryFrom($status);
-        $request = new PatchPrizeThingDto(
+        $request = new PatchPrizeThingReqest(
             $statusEnum
         );
 

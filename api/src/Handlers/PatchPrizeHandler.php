@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use OlZyuzin\Models\Prize;
 use OlZyuzin\Models\PrizeThing;
 use OlZyuzin\Reposotories\PrizeRepositoryInterface;
-use OlZyuzin\Representation\Requests\PatchPrizeThingDto;
+use OlZyuzin\Representation\Requests\PatchPrizeThingReqest;
 
 class PatchPrizeHandler
 {
@@ -18,8 +18,8 @@ class PatchPrizeHandler
     }
 
     public function handle(
-        int $prizeId,
-        PatchPrizeThingDto $dto,
+        int                   $prizeId,
+        PatchPrizeThingReqest $dto,
     ): Prize {
         /** @var PrizeThing $prize */
         $prize = $this->prizeRepository->findPrize($prizeId);
