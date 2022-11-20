@@ -2,8 +2,10 @@
 
 namespace OlZyuzinFramework;
 
-use Psr\Container\ContainerInterface;
 use Laminas\Diactoros\Response;
+use Laminas\Diactoros\Response\JsonResponse;
+use OlZyuzinFramework\Exceptions\HttpException;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -29,7 +31,17 @@ class RequestHandler implements RequestHandlerInterface
                 403,
             );
         } else {
-            $response = $action->perform($request);
+            try {
+                $response = $action->perform($request);
+            } catch (HttpException $e) {
+                $response = new JsonResponse(
+                    [
+                        'error' => $e->getClientMessage(),
+                        'details' => $e->getDetailsForClient(),
+                    ],
+                    $e->getStatusCode(),
+                );
+            }
         }
 
         return $response;
