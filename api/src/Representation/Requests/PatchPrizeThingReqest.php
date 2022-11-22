@@ -5,6 +5,7 @@ namespace OlZyuzin\Representation\Requests;
 use OlZyuzin\Models\PrizeThingStatus;
 use OlZyuzinFramework\Exceptions\InvalidRequestPayloadStructure;
 use OlZyuzinFramework\Exceptions\MalformedJsonSyntax;
+use OlZyuzinFramework\Utils\JsonUtil;
 
 class PatchPrizeThingReqest
 {
@@ -20,16 +21,7 @@ class PatchPrizeThingReqest
      */
     public static function initFromJson(string $json): self
     {
-        $data = json_decode($json, true);
-        if (!is_array($data)) {
-            throw new MalformedJsonSyntax();
-        }
-
-        if(!isset($data['data'])) {
-            throw new InvalidRequestPayloadStructure(['Expected data key in the root of json']);
-        }
-
-        $data = $data['data'];
+        $data = JsonUtil::extractDataFromJson($json);
         $status = $data['status'];
         $statusEnum = PrizeThingStatus::tryFrom($status);
         $request = new PatchPrizeThingReqest(
