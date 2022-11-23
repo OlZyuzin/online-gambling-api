@@ -4,16 +4,16 @@ namespace OlZyuzin\Http\Actions;
 
 use Laminas\Diactoros\Response\JsonResponse;
 use OlZyuzin\Handlers\Dto\PatchPrizeThingDto;
-use OlZyuzin\Handlers\PatchPrizeHandler;
-use OlZyuzin\Http\Normalizers\PatchPrizeThingNormalizer;
+use OlZyuzin\Handlers\UpdatePrizeStatus\UpdatePrizeStatusHandler;
+use OlZyuzin\Http\Normalizers\UpdatePrizeStatusNormalizer;
 use OlZyuzinFramework\ActionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class PatchPrizeAction implements ActionInterface
+class UpdatePrizeStatusAction implements ActionInterface
 {
     public function __construct(
-        private PatchPrizeHandler $patchPrizeHandler,
+        private UpdatePrizeStatusHandler $updatePrizeStatusHandler,
     )
     {
     }
@@ -29,9 +29,9 @@ class PatchPrizeAction implements ActionInterface
         $prizeId = (int) $qp['id'];
 
         $json = $request->getBody()->getContents();
-        $dto = PatchPrizeThingNormalizer::createDtoFromJson($json);
+        $dto = UpdatePrizeStatusNormalizer::createDtoFromJson($json);
 
-        $prize = $this->patchPrizeHandler->handle($prizeId, $dto);
+        $prize = $this->updatePrizeStatusHandler->handle($prizeId, $dto);
 
         return new JsonResponse(['data' => $prize]);
     }

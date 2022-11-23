@@ -1,11 +1,12 @@
 <?php
 
-namespace OlZyuzin\Handlers;
+namespace OlZyuzin\Handlers\PrizeGeneration;
 
+use OlZyuzin\Handlers\Interfaces\PrizeGenerationInterface;
 use OlZyuzin\Models\Prize\Prize;
 
 
-class PrizeGenerationHandler implements PrizeGenerationHandlerInterface
+class PrizeGenerationHandler implements PrizeGenerationInterface
 {
     private array $prizeHandlers;
 
@@ -27,7 +28,7 @@ class PrizeGenerationHandler implements PrizeGenerationHandlerInterface
         return $prize;
     }
 
-    private function getRandomHandler(): PrizeGenerationHandlerInterface
+    private function getRandomHandler(): PrizeGenerationInterface
     {
         $key = array_rand($this->prizeHandlers);
         return $this->prizeHandlers[$key];

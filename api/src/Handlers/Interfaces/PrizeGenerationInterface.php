@@ -1,10 +1,10 @@
 <?php
 
-namespace OlZyuzin\Handlers;
+namespace OlZyuzin\Handlers\Interfaces;
 
 use OlZyuzin\Models\Prize\Prize;
 
-interface PrizeGenerationHandlerInterface
+interface PrizeGenerationInterface
 {
     public function handle(int $userId): Prize;
 }

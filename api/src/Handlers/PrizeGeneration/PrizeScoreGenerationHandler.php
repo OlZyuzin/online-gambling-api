@@ -1,14 +1,15 @@
 <?php
 
-namespace OlZyuzin\Handlers;
+namespace OlZyuzin\Handlers\PrizeGeneration;
 
 use Doctrine\ORM\EntityManagerInterface;
+use OlZyuzin\Handlers\Interfaces\PrizeGenerationInterface;
 use OlZyuzin\Models\Prize\PrizeScore;
 use OlZyuzin\Models\User;
 use OlZyuzin\Reposotories\Interfaces\SettingRepositoryInterface;
 use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
 
-class PrizeScoreGenerationHandler implements PrizeGenerationHandlerInterface
+class PrizeScoreGenerationHandler implements PrizeGenerationInterface
 {
     public function __construct(
         private EntityManagerInterface $em,

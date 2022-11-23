@@ -2,16 +2,10 @@
 
 namespace OlZyuzin\Handlers\Dto;
 
-use OlZyuzin\Models\Prize\PrizeThingStatus;
-use OlZyuzinFramework\Exceptions\InvalidRequestPayloadStructure;
-use OlZyuzinFramework\Exceptions\MalformedJsonSyntax;
-use OlZyuzinFramework\Utils\JsonUtil;
-
-class PatchPrizeThingDto
+class UpdatePrizeStatusDto
 {
     public function __construct(
-        public ?PrizeThingStatus $status,
+        public string $status,
     ) {
-
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-namespace OlZyuzin\Handlers;
+namespace OlZyuzin\Handlers\PrizeGeneration;
 
 use Doctrine\ORM\EntityManagerInterface;
+use OlZyuzin\Handlers\Interfaces\PrizeGenerationInterface;
 use OlZyuzin\Models\Prize\PrizeScore;
 use OlZyuzin\Models\Prize\PrizeThing;
 use OlZyuzin\Models\Thing;
@@ -10,13 +11,13 @@ use OlZyuzin\Models\User;
 use OlZyuzin\Reposotories\Interfaces\ThingRepositoryInterface;
 use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
 
-class PrizeThingGenerationHandler implements PrizeGenerationHandlerInterface
+class PrizeThingGenerationHandler implements PrizeGenerationInterface
 {
     public function __construct(
-        private EntityManagerInterface $em,
+        private EntityManagerInterface      $em,
         private PrizeScoreGenerationHandler $prizeScoreGenerationHandler,
-        private ThingRepositoryInterface $thingRepository,
-        private UserRepositoryInterface  $userRepository,
+        private ThingRepositoryInterface    $thingRepository,
+        private UserRepositoryInterface     $userRepository,
     )
     {
     }

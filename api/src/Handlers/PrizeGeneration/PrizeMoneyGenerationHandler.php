@@ -1,14 +1,15 @@
 <?php
 
-namespace OlZyuzin\Handlers;
+namespace OlZyuzin\Handlers\PrizeGeneration;
 
 use Doctrine\ORM\EntityManagerInterface;
+use OlZyuzin\Handlers\Interfaces\PrizeGenerationInterface;
 use OlZyuzin\Models\Prize\PrizeMoney;
 use OlZyuzin\Models\Prize\PrizeScore;
 use OlZyuzin\Models\User;
 use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
 
-class PrizeMoneyGenerationHandler implements PrizeGenerationHandlerInterface
+class PrizeMoneyGenerationHandler implements PrizeGenerationInterface
 {
     // TODO fix this hardcode; This value probably should retrieved from bank API
     private int $amountOfMoneyLeft = 1000;
@@ -18,9 +19,9 @@ class PrizeMoneyGenerationHandler implements PrizeGenerationHandlerInterface
     private float $moneyToScoreRatio = 1.5;
 
     public function __construct(
-        private EntityManagerInterface $em,
+        private EntityManagerInterface      $em,
         private PrizeScoreGenerationHandler $prizeScoreGenerationHandler,
-        private UserRepositoryInterface $userRepository,
+        private UserRepositoryInterface     $userRepository,
     ) {
     }
 

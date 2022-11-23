@@ -3,7 +3,7 @@
 namespace OlZyuzin\Http\Actions;
 
 use Laminas\Diactoros\Response\JsonResponse;
-use OlZyuzin\Handlers\PrizeGenerationHandler;
+use OlZyuzin\Handlers\PrizeGeneration\PrizeGenerationHandler;
 use OlZyuzinFramework\ActionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

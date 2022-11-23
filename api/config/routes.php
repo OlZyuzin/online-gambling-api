@@ -1,7 +1,7 @@
 <?php
 
 use OlZyuzin\Http\Actions\LoadTestAction;
-use OlZyuzin\Http\Actions\PatchPrizeAction;
+use OlZyuzin\Http\Actions\UpdatePrizeStatusAction;
 use OlZyuzin\Http\Actions\PlayAction;
 
 return [
@@ -11,7 +11,7 @@ return [
     '/api/play' => [
         'post' => PlayAction::class,
     ],
-    '/api/prize' => [
-        'patch' => PatchPrizeAction::class
+    '/api/prize/status' => [
+        'patch' => UpdatePrizeStatusAction::class
     ],
 ];
