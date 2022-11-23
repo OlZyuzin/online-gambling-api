@@ -4,6 +4,7 @@ namespace OlZyuzin\Banking\FakeBankA;
 
 
 use Doctrine\ORM\EntityManagerInterface;
+use OlZyuzin\Banking\BankingInterface;
 use OlZyuzin\Banking\Exceptions\BankAuthenticationFailed;
 use OlZyuzin\Banking\Exceptions\GetAccountDetailsFailed;
 use OlZyuzin\Banking\Exceptions\InsufficientAppFunds;
@@ -19,7 +20,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * Class purpose is to get application accoutnt details such as balance
  */
-class Banking
+class Banking implements BankingInterface
 {
     public function __construct(
         private HttpClient $httpClient,
