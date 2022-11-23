@@ -3,8 +3,8 @@
 namespace OlZyuzin\Handlers;
 
 use Doctrine\ORM\EntityManagerInterface;
-use OlZyuzin\Models\PrizeMoney;
-use OlZyuzin\Models\PrizeScore;
+use OlZyuzin\Models\Prize\PrizeMoney;
+use OlZyuzin\Models\Prize\PrizeScore;
 use OlZyuzin\Models\User;
 use OlZyuzin\Reposotories\UserRepositoryInterface;
 

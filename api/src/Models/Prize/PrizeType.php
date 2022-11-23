@@ -1,6 +1,6 @@
 <?php
 
-namespace OlZyuzin\Models;
+namespace OlZyuzin\Models\Prize;
 
 enum PrizeType: string
 {

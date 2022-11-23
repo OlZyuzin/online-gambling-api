@@ -2,11 +2,8 @@
 
 namespace OlZyuzin\Actions;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Laminas\Diactoros\Response\JsonResponse;
 use OlZyuzin\Handlers\PatchPrizeHandler;
-use OlZyuzin\Models\PrizeThing;
-use OlZyuzin\Reposotories\PrizeRepositoryInterface;
 use OlZyuzin\Representation\Requests\PatchPrizeThingReqest;
 use OlZyuzinFramework\ActionInterface;
 use Psr\Http\Message\RequestInterface;

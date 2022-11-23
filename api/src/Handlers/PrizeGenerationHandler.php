@@ -2,7 +2,7 @@
 
 namespace OlZyuzin\Handlers;
 
-use OlZyuzin\Models\Prize;
+use OlZyuzin\Models\Prize\Prize;
 
 
 class PrizeGenerationHandler implements PrizeGenerationHandlerInterface

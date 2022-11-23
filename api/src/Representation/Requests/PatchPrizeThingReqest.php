@@ -2,7 +2,7 @@
 
 namespace OlZyuzin\Representation\Requests;
 
-use OlZyuzin\Models\PrizeThingStatus;
+use OlZyuzin\Models\Prize\PrizeThingStatus;
 use OlZyuzinFramework\Exceptions\InvalidRequestPayloadStructure;
 use OlZyuzinFramework\Exceptions\MalformedJsonSyntax;
 use OlZyuzinFramework\Utils\JsonUtil;

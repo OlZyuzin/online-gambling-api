@@ -5,7 +5,7 @@ namespace OlZyuzin\Reposotories;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use OlZyuzin\Models\Prize;
+use OlZyuzin\Models\Prize\Prize;
 
 class PrizeRepository extends EntityRepository implements PrizeRepositoryInterface
 {

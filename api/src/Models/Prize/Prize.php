@@ -1,8 +1,9 @@
 <?php
 
-namespace OlZyuzin\Models;
+namespace OlZyuzin\Models\Prize;
 
 use Doctrine\ORM\Mapping as ORM;
+use OlZyuzin\Models\User;
 
 
 #[ORM\Entity]

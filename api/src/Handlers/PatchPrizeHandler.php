@@ -3,8 +3,8 @@
 namespace OlZyuzin\Handlers;
 
 use Doctrine\ORM\EntityManagerInterface;
-use OlZyuzin\Models\Prize;
-use OlZyuzin\Models\PrizeThing;
+use OlZyuzin\Models\Prize\Prize;
+use OlZyuzin\Models\Prize\PrizeThing;
 use OlZyuzin\Reposotories\PrizeRepositoryInterface;
 use OlZyuzin\Representation\Requests\PatchPrizeThingReqest;
 
