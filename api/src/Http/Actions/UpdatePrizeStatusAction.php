@@ -3,9 +3,8 @@
 namespace OlZyuzin\Http\Actions;
 
 use Laminas\Diactoros\Response\JsonResponse;
-use OlZyuzin\Handlers\Dto\PatchPrizeThingDto;
 use OlZyuzin\Handlers\UpdatePrizeStatus\UpdatePrizeStatusHandler;
-use OlZyuzin\Http\Normalizers\UpdatePrizeStatusNormalizer;
+use OlZyuzin\Http\Deserializers\UpdatePrizeStatusDeserializer;
 use OlZyuzinFramework\ActionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -29,7 +28,7 @@ class UpdatePrizeStatusAction implements ActionInterface
         $prizeId = (int) $qp['id'];
 
         $json = $request->getBody()->getContents();
-        $dto = UpdatePrizeStatusNormalizer::createDtoFromJson($json);
+        $dto = UpdatePrizeStatusDeserializer::deserializeJson($json);
 
         $prize = $this->updatePrizeStatusHandler->handle($prizeId, $dto);
 

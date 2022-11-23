@@ -4,8 +4,6 @@ namespace OlZyuzin\Handlers\UpdatePrizeStatus;
 
 use Doctrine\ORM\EntityManagerInterface;
 use OlZyuzin\Banking\BankingInterface;
-use OlZyuzin\Handlers\PaymentAccountRepositoryInterface;
-use OlZyuzin\Handlers\PrizeMoneyStatus;
 use OlZyuzin\Models\Prize\PrizeMoney;
 use OlZyuzin\Models\Prize\PrizeMoneyStatus;
 use OlZyuzin\Repositories\Interfaces\PaymentAccountRepositoryInterface;

@@ -3,11 +3,10 @@
 namespace OlZyuzin\Handlers\UpdatePrizeStatus;
 
 use Doctrine\ORM\EntityManagerInterface;
-use OlZyuzin\Handlers\Interfaces\UpdatePrizeStatusInterface;
 use OlZyuzin\Models\Prize\PrizeThing;
 use OlZyuzin\Models\Prize\PrizeThingStatus;
 
-class UpdatePrizeThingStatusHandler implements UpdatePrizeStatusInterface
+class UpdatePrizeThingStatusHandler
 {
 
     public function __construct(

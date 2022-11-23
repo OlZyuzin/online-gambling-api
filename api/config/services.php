@@ -34,4 +34,13 @@ return [
     SettingRepositoryInterface::class => get(SettingRepository::class),
     ThingRepositoryInterface::class => get(ThingRepository::class),
     PrizeRepositoryInterface::class => get(PrizeRepository::class),
+    BankingInterface::class => get(Banking::class),
+    FakeBankAhttpClient::class => create(FakeBankAhttpClient::class)->constructor(
+      DI\get('fake-bank-a.host'),
+        DI\get('fake-bank-a.client-id'),
+        DI\get('fake-bank-a.client-secret'),
+        DI\get('fake-bank-a.certificate-path'),
+        DI\get('fake-bank-a.certificate-password'),
+    ),
+    PaymentAccountRepositoryInterface::class => get(PaymentAccountRepository::class),
 ];

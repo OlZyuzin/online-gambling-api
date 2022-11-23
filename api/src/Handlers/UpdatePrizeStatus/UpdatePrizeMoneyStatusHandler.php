@@ -3,14 +3,14 @@
 namespace OlZyuzin\Handlers\UpdatePrizeStatus;
 
 use Doctrine\ORM\EntityManagerInterface;
-use OlZyuzin\Handlers\Interfaces\UpdatePrizeStatusInterface;
 use OlZyuzin\Models\Prize\PrizeMoney;
+use OlZyuzin\Models\Prize\PrizeMoneyStatus;
 
-class UpdatePrizeMoneyStatusHandler implements UpdatePrizeStatusInterface
+class UpdatePrizeMoneyStatusHandler
 {
     public function __construct(
         private AcceptPrizeMoneyHandler $acceptPrizeMoneyHandler,
-        EntityManagerInterface $em,
+        private EntityManagerInterface $em,
     )
     {
     }
@@ -18,16 +18,15 @@ class UpdatePrizeMoneyStatusHandler implements UpdatePrizeStatusInterface
     public function handle(
         PrizeMoney $prize,
         string     $status,
-    )
-    {
-        if ($status === 'accepted') {
+    ): void {
+        if ($status === PrizeMoneyStatus::ACCEPTED()) {
             $this
                 ->acceptPrizeMoneyHandler
                 ->handle(
                     $prize,
                 );
-        } elseif ($status === 'rejected') {
-            $prize->status = 'rejected';
+        } elseif ($status === PrizeMoneyStatus::REJECTED()) {
+            $prize->status = PrizeMoneyStatus::REJECTED;
             $this->em->flush();
         }
     }

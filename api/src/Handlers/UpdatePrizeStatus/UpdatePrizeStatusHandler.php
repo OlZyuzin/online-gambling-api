@@ -3,7 +3,6 @@
 namespace OlZyuzin\Handlers\UpdatePrizeStatus;
 
 use OlZyuzin\Handlers\Dto\UpdatePrizeStatusDto;
-use OlZyuzin\Handlers\Interfaces\UpdatePrizeStatusInterface;
 use OlZyuzin\Models\Prize\Prize;
 use OlZyuzin\Models\Prize\PrizeThing;
 use OlZyuzin\Models\Prize\PrizeType;
@@ -34,10 +33,20 @@ class UpdatePrizeStatusHandler
 
         $handler = $this->getHandler($prize->getType());
 
+        $handler->handle(
+            $prize,
+            $dto->status,
+        );
+
         return $prize;
     }
 
-    private function getHandler(PrizeType $type): UpdatePrizeStatusInterface
+    /**
+     * TODO think of way to return some concrete interface type like UpdatePrizeStatusInterface
+     *      at the moment it can't be done because of Liskof principle gets violated
+     * @see \OlZyuzin\Handlers\Interfaces\UpdatePrizeStatusInterface
+     */
+    private function getHandler(PrizeType $type): mixed
     {
         return $this->handlers[$type()];
     }
