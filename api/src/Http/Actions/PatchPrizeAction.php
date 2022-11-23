@@ -1,10 +1,11 @@
 <?php
 
-namespace OlZyuzin\Actions;
+namespace OlZyuzin\Http\Actions;
 
 use Laminas\Diactoros\Response\JsonResponse;
+use OlZyuzin\Handlers\Dto\PatchPrizeThingDto;
 use OlZyuzin\Handlers\PatchPrizeHandler;
-use OlZyuzin\Representation\Requests\PatchPrizeThingReqest;
+use OlZyuzin\Http\Normalizers\PatchPrizeThingNormalizer;
 use OlZyuzinFramework\ActionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -28,7 +29,7 @@ class PatchPrizeAction implements ActionInterface
         $prizeId = (int) $qp['id'];
 
         $json = $request->getBody()->getContents();
-        $dto = PatchPrizeThingReqest::initFromJson($json);
+        $dto = PatchPrizeThingNormalizer::createDtoFromJson($json);
 
         $prize = $this->patchPrizeHandler->handle($prizeId, $dto);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace OlZyuzin\Actions;
+namespace OlZyuzin\Http\Actions;
 
 use Laminas\Diactoros\Response\JsonResponse;
 use OlZyuzin\Handlers\PrizeGenerationHandler;

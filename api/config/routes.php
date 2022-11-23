@@ -1,8 +1,8 @@
 <?php
 
-use OlZyuzin\Actions\LoadTestAction;
-use OlZyuzin\Actions\PatchPrizeAction;
-use OlZyuzin\Actions\PlayAction;
+use OlZyuzin\Http\Actions\LoadTestAction;
+use OlZyuzin\Http\Actions\PatchPrizeAction;
+use OlZyuzin\Http\Actions\PlayAction;
 
 return [
     '/api/load-test' => [

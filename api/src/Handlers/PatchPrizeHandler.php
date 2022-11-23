@@ -3,10 +3,10 @@
 namespace OlZyuzin\Handlers;
 
 use Doctrine\ORM\EntityManagerInterface;
+use OlZyuzin\Handlers\Dto\PatchPrizeThingDto;
 use OlZyuzin\Models\Prize\Prize;
 use OlZyuzin\Models\Prize\PrizeThing;
 use OlZyuzin\Reposotories\Interfaces\PrizeRepositoryInterface;
-use OlZyuzin\Representation\Requests\PatchPrizeThingReqest;
 
 class PatchPrizeHandler
 {
@@ -18,8 +18,8 @@ class PatchPrizeHandler
     }
 
     public function handle(
-        int                   $prizeId,
-        PatchPrizeThingReqest $dto,
+        int                $prizeId,
+        PatchPrizeThingDto $dto,
     ): Prize {
         /** @var PrizeThing $prize */
         $prize = $this->prizeRepository->findPrize($prizeId);
