@@ -1,6 +1,6 @@
 <?php
 
-namespace OlZyuzin\Reposotories;
+namespace OlZyuzin\Reposotories\Interfaces;
 
 use OlZyuzin\Models\User;
 

@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use OlZyuzin\Models\Prize\PrizeMoney;
 use OlZyuzin\Models\Prize\PrizeScore;
 use OlZyuzin\Models\User;
-use OlZyuzin\Reposotories\UserRepositoryInterface;
+use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
 
 class PrizeMoneyGenerationHandler implements PrizeGenerationHandlerInterface
 {

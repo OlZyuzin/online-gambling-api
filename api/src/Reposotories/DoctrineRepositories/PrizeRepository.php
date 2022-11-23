@@ -1,11 +1,12 @@
 <?php
 
-namespace OlZyuzin\Reposotories;
+namespace OlZyuzin\Reposotories\DoctrineRepositories;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use OlZyuzin\Models\Prize\Prize;
+use OlZyuzin\Reposotories\Interfaces\PrizeRepositoryInterface;
 
 class PrizeRepository extends EntityRepository implements PrizeRepositoryInterface
 {

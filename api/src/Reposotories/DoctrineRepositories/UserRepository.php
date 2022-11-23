@@ -1,11 +1,12 @@
 <?php
 
-namespace OlZyuzin\Reposotories;
+namespace OlZyuzin\Reposotories\DoctrineRepositories;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use OlZyuzin\Models\User;
+use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
 
 class UserRepository extends EntityRepository implements UserRepositoryInterface
 {

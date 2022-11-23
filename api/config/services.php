@@ -1,14 +1,14 @@
 <?php
 
 use Doctrine\ORM\EntityManagerInterface;
-use OlZyuzin\Reposotories\PrizeRepository;
-use OlZyuzin\Reposotories\PrizeRepositoryInterface;
-use OlZyuzin\Reposotories\SettingRepository;
-use OlZyuzin\Reposotories\SettingRepositoryInterface;
-use OlZyuzin\Reposotories\ThingRepository;
-use OlZyuzin\Reposotories\ThingRepositoryInterface;
-use OlZyuzin\Reposotories\UserRepository;
-use OlZyuzin\Reposotories\UserRepositoryInterface;
+use OlZyuzin\Reposotories\DoctrineRepositories\PrizeRepository;
+use OlZyuzin\Reposotories\DoctrineRepositories\SettingRepository;
+use OlZyuzin\Reposotories\DoctrineRepositories\ThingRepository;
+use OlZyuzin\Reposotories\DoctrineRepositories\UserRepository;
+use OlZyuzin\Reposotories\Interfaces\PrizeRepositoryInterface;
+use OlZyuzin\Reposotories\Interfaces\SettingRepositoryInterface;
+use OlZyuzin\Reposotories\Interfaces\ThingRepositoryInterface;
+use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
 use OlZyuzinFramework\EntityManagerFactory;
 use function DI\create;
 use function DI\get;

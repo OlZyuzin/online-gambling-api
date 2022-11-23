@@ -5,8 +5,8 @@ namespace OlZyuzin\Handlers;
 use Doctrine\ORM\EntityManagerInterface;
 use OlZyuzin\Models\Prize\PrizeScore;
 use OlZyuzin\Models\User;
-use OlZyuzin\Reposotories\SettingRepositoryInterface;
-use OlZyuzin\Reposotories\UserRepositoryInterface;
+use OlZyuzin\Reposotories\Interfaces\SettingRepositoryInterface;
+use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
 
 class PrizeScoreGenerationHandler implements PrizeGenerationHandlerInterface
 {

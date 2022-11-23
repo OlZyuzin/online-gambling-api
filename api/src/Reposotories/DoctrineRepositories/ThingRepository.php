@@ -1,11 +1,12 @@
 <?php
 
-namespace OlZyuzin\Reposotories;
+namespace OlZyuzin\Reposotories\DoctrineRepositories;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use OlZyuzin\Models\Thing;
+use OlZyuzin\Reposotories\Interfaces\ThingRepositoryInterface;
 
 class ThingRepository extends EntityRepository implements ThingRepositoryInterface
 {
