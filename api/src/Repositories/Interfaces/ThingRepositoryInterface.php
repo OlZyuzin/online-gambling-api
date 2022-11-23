@@ -1,6 +1,6 @@
 <?php
 
-namespace OlZyuzin\Reposotories\Interfaces;
+namespace OlZyuzin\Repositories\Interfaces;
 
 use OlZyuzin\Models\Thing;
 

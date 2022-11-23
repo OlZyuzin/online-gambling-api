@@ -7,7 +7,7 @@ use OlZyuzin\Handlers\Interfaces\UpdatePrizeStatusInterface;
 use OlZyuzin\Models\Prize\Prize;
 use OlZyuzin\Models\Prize\PrizeThing;
 use OlZyuzin\Models\Prize\PrizeType;
-use OlZyuzin\Reposotories\Interfaces\PrizeRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\PrizeRepositoryInterface;
 
 class UpdatePrizeStatusHandler
 {

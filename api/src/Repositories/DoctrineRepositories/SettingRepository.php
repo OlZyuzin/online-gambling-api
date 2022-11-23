@@ -1,12 +1,12 @@
 <?php
 
-namespace OlZyuzin\Reposotories\DoctrineRepositories;
+namespace OlZyuzin\Repositories\DoctrineRepositories;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use OlZyuzin\Models\Setting;
-use OlZyuzin\Reposotories\Interfaces\SettingRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\SettingRepositoryInterface;
 
 class SettingRepository extends EntityRepository implements SettingRepositoryInterface
 {

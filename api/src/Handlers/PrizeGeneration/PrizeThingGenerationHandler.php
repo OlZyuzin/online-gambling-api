@@ -8,8 +8,8 @@ use OlZyuzin\Models\Prize\PrizeScore;
 use OlZyuzin\Models\Prize\PrizeThing;
 use OlZyuzin\Models\Thing;
 use OlZyuzin\Models\User;
-use OlZyuzin\Reposotories\Interfaces\ThingRepositoryInterface;
-use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\ThingRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\UserRepositoryInterface;
 
 class PrizeThingGenerationHandler implements PrizeGenerationInterface
 {

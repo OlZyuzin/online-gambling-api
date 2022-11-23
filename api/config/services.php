@@ -1,14 +1,19 @@
 <?php
 
 use Doctrine\ORM\EntityManagerInterface;
-use OlZyuzin\Reposotories\DoctrineRepositories\PrizeRepository;
-use OlZyuzin\Reposotories\DoctrineRepositories\SettingRepository;
-use OlZyuzin\Reposotories\DoctrineRepositories\ThingRepository;
-use OlZyuzin\Reposotories\DoctrineRepositories\UserRepository;
-use OlZyuzin\Reposotories\Interfaces\PrizeRepositoryInterface;
-use OlZyuzin\Reposotories\Interfaces\SettingRepositoryInterface;
-use OlZyuzin\Reposotories\Interfaces\ThingRepositoryInterface;
-use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
+use OlZyuzin\Banking\BankingInterface;
+use OlZyuzin\Banking\FakeBankA\Banking;
+use OlZyuzin\Banking\FakeBankA\HttpClient as FakeBankAhttpClient;
+use OlZyuzin\Repositories\DoctrineRepositories\PaymentAccountRepository;
+use OlZyuzin\Repositories\DoctrineRepositories\PrizeRepository;
+use OlZyuzin\Repositories\DoctrineRepositories\SettingRepository;
+use OlZyuzin\Repositories\DoctrineRepositories\ThingRepository;
+use OlZyuzin\Repositories\DoctrineRepositories\UserRepository;
+use OlZyuzin\Repositories\Interfaces\PaymentAccountRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\PrizeRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\SettingRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\ThingRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\UserRepositoryInterface;
 use OlZyuzinFramework\EntityManagerFactory;
 use function DI\create;
 use function DI\get;

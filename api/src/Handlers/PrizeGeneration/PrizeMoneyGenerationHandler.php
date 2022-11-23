@@ -7,7 +7,7 @@ use OlZyuzin\Handlers\Interfaces\PrizeGenerationInterface;
 use OlZyuzin\Models\Prize\PrizeMoney;
 use OlZyuzin\Models\Prize\PrizeScore;
 use OlZyuzin\Models\User;
-use OlZyuzin\Reposotories\Interfaces\UserRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\UserRepositoryInterface;
 
 class PrizeMoneyGenerationHandler implements PrizeGenerationInterface
 {
