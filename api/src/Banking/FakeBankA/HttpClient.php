@@ -10,7 +10,7 @@ class HttpClient
 {
     private Client  $httpClient;
 
-    private ?string $authToken;
+    private ?string $authToken = null;
 
     public function __construct(
         private string $bankHost,
