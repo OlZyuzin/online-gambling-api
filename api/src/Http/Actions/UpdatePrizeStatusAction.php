@@ -5,6 +5,7 @@ namespace OlZyuzin\Http\Actions;
 use Laminas\Diactoros\Response\JsonResponse;
 use OlZyuzin\Handlers\UpdatePrizeStatus\UpdatePrizeStatusHandler;
 use OlZyuzin\Http\Deserializers\UpdatePrizeStatusDeserializer;
+use OlZyuzin\Http\Responses\Factories\PrizeResponseFactory;
 use OlZyuzinFramework\ActionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -32,6 +33,8 @@ class UpdatePrizeStatusAction implements ActionInterface
 
         $prize = $this->updatePrizeStatusHandler->handle($prizeId, $dto);
 
-        return new JsonResponse(['data' => $prize]);
+        return new JsonResponse([
+            'data' => PrizeResponseFactory::createDto($prize),
+        ]);
     }
 }

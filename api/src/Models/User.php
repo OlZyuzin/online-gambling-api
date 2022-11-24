@@ -3,11 +3,10 @@
 namespace OlZyuzin\Models;
 
 use Doctrine\ORM\Mapping as ORM;
-use JsonSerializable;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'users')]
-class User implements JsonSerializable
+class User
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
@@ -28,14 +27,5 @@ class User implements JsonSerializable
     public function topUpScore(int $amount): void
     {
         $this->score += $amount;
-    }
-
-    public function jsonSerialize(): array
-    {
-        return [
-            'id' => $this->id,
-            'score' => $this->score,
-            'balance' => $this->balance,
-        ];
     }
 }

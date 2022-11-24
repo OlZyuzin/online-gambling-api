@@ -4,6 +4,7 @@ namespace OlZyuzin\Http\Actions;
 
 use Laminas\Diactoros\Response\JsonResponse;
 use OlZyuzin\Handlers\PrizeGeneration\PrizeGenerationHandler;
+use OlZyuzin\Http\Responses\Factories\PrizeResponseFactory;
 use OlZyuzinFramework\ActionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -26,6 +27,8 @@ class PlayAction implements ActionInterface
 
         $prize = $this->prizeGenerationHandler->handle($userId);
 
-        return new JsonResponse($prize);
+        return new JsonResponse([
+            'data' => PrizeResponseFactory::createDto($prize),
+        ]);
     }
 }

@@ -14,7 +14,7 @@ use OlZyuzin\Models\User;
     'money' => PrizeMoney::class,
     'thing' => PrizeThing::class,
 ])]
-abstract class Prize implements \JsonSerializable
+abstract class Prize
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
@@ -23,15 +23,6 @@ abstract class Prize implements \JsonSerializable
 
     #[ORM\ManyToOne(targetEntity: User::class)]
     public User $user;
-
-    public function jsonSerialize(): mixed
-    {
-        return [
-            'id' => $this->id,
-            'user' => $this->user,
-            'type' => static::getType()
-        ];
-    }
 
     abstract public function getType(): PrizeType;
 }

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'prize_score')]
-class PrizeScore extends Prize implements \JsonSerializable
+class PrizeScore extends Prize
 {
     #[ORM\Column(type: 'integer', nullable: false)]
     public int $amount;
@@ -14,13 +14,5 @@ class PrizeScore extends Prize implements \JsonSerializable
     public function getType(): PrizeType
     {
         return PrizeType::Score;
-    }
-
-    public function jsonSerialize(): mixed
-    {
-        $data = parent::jsonSerialize();
-        $data['amount'] = $this->amount;
-
-        return $data;
     }
 }

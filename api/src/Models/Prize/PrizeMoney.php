@@ -12,18 +12,10 @@ class PrizeMoney extends Prize
     public int $amount;
 
     #[ORM\Column(type: 'string', enumType: PrizeMoneyStatus::class)]
-    public PrizeMoneyStatus $status;
+    public PrizeMoneyStatus $status = PrizeMoneyStatus::PENDING;
 
     public function getType(): PrizeType
     {
         return PrizeType::Money;
-    }
-
-    public function jsonSerialize(): mixed
-    {
-        $data = parent::jsonSerialize();
-        $data['amount'] = $this->amount;
-
-        return $data;
     }
 }
