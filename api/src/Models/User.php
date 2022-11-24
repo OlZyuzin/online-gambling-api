@@ -20,9 +20,6 @@ class User implements JsonSerializable
     #[ORM\Column(type: 'integer', nullable: false)]
     private int $score = 0;
 
-    #[ORM\Column(type: 'integer', nullable: false)]
-    private int $balance = 0;
-
     public function topUpBalance(int $amount): void
     {
         $this->balance += $amount;
