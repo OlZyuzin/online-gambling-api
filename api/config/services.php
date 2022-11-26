@@ -5,12 +5,16 @@ use OlZyuzin\Banking\BankingInterface;
 use OlZyuzin\Banking\FakeBankA\Banking;
 use OlZyuzin\Banking\FakeBankA\HttpClient as FakeBankAhttpClient;
 use OlZyuzin\Repositories\DoctrineRepositories\PaymentAccountRepository;
+use OlZyuzin\Repositories\DoctrineRepositories\PrizeMoneyRepository;
 use OlZyuzin\Repositories\DoctrineRepositories\PrizeRepository;
+use OlZyuzin\Repositories\DoctrineRepositories\PrizeThingRepository;
 use OlZyuzin\Repositories\DoctrineRepositories\SettingRepository;
 use OlZyuzin\Repositories\DoctrineRepositories\ThingRepository;
 use OlZyuzin\Repositories\DoctrineRepositories\UserRepository;
 use OlZyuzin\Repositories\Interfaces\PaymentAccountRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\PrizeMoneyRepositoryInterface;
 use OlZyuzin\Repositories\Interfaces\PrizeRepositoryInterface;
+use OlZyuzin\Repositories\Interfaces\PrizeThingRepositoryInterface;
 use OlZyuzin\Repositories\Interfaces\SettingRepositoryInterface;
 use OlZyuzin\Repositories\Interfaces\ThingRepositoryInterface;
 use OlZyuzin\Repositories\Interfaces\UserRepositoryInterface;
@@ -43,4 +47,6 @@ return [
         DI\get('fake-bank-a.certificate-password'),
     ),
     PaymentAccountRepositoryInterface::class => get(PaymentAccountRepository::class),
+    PrizeThingRepositoryInterface::class => get(PrizeThingRepository::class),
+    PrizeMoneyRepositoryInterface::class => get(PrizeMoneyRepository::class),
 ];
