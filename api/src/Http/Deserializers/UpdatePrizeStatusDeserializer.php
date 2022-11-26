@@ -3,24 +3,25 @@
 namespace OlZyuzin\Http\Deserializers;
 
 use OlZyuzin\Handlers\Dto\UpdatePrizeStatusDto;
-use OlZyuzinFramework\Exceptions\InvalidRequestPayloadStructure;
-use OlZyuzinFramework\Exceptions\MalformedJsonSyntax;
 use OlZyuzinFramework\Utils\JsonUtil;
 
 class UpdatePrizeStatusDeserializer
 {
-    /**
-     * @throws MalformedJsonSyntax
-     * @throws InvalidRequestPayloadStructure
-     */
-    public static function deserializeJson(string $json): UpdatePrizeStatusDto
+    public static function deserializeJson(string $json): UpdatePrizeStatusDeserializationResult
     {
-        $data = JsonUtil::extractDataFromJson($json);
-        $status = $data['status'];
-        $dto = new UpdatePrizeStatusDto(
+        $result = new UpdatePrizeStatusDeserializationResult();
+        $extractResult = JsonUtil::extractDataFromJson($json);
+
+        if (!empty($extractResult)) {
+            $result->errors = $extractResult->errors;
+            return $result;
+        }
+
+        $status = $extractResult->data['status'];
+        $result->dto = new UpdatePrizeStatusDto(
             $status,
         );
 
-        return $dto;
+        return $result;
     }
 }

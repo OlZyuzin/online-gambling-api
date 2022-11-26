@@ -26,12 +26,24 @@ class UpdatePrizeStatusAction implements ActionInterface
     public function perform(RequestInterface $request): ResponseInterface
     {
         $qp = $request->getQueryParams();
-        $prizeId = (int) $qp['id'];
+        $prizeId = (int)$qp['id'];
 
         $json = $request->getBody()->getContents();
-        $dto = UpdatePrizeStatusDeserializer::deserializeJson($json);
+        $deserializationResult = UpdatePrizeStatusDeserializer::deserializeJson($json);
 
-        $prize = $this->updatePrizeStatusHandler->handle($prizeId, $dto);
+        if ($deserializationResult->errors) {
+            return new JsonResponse(
+                ['errors' => $deserializationResult->errors],
+                400,
+            );
+        }
+
+        $prize = $this
+            ->updatePrizeStatusHandler
+            ->handle(
+                $prizeId,
+                $deserializationResult->dto
+            );
 
         return new JsonResponse([
             'data' => PrizeResponseFactory::createDto($prize),

@@ -2,26 +2,29 @@
 
 namespace OlZyuzinFramework\Utils;
 
-use OlZyuzinFramework\Exceptions\InvalidRequestPayloadStructure;
-use OlZyuzinFramework\Exceptions\MalformedJsonSyntax;
-
 
 class JsonUtil {
-    /**
-     * @throws InvalidRequestPayloadStructure
-     * @throws MalformedJsonSyntax
-     */
-    public static function extractDataFromJson(string $json): array
+    public static function extractDataFromJson(string $json): ExtractDataFromJsonResult
     {
+        $result = new ExtractDataFromJsonResult();
+
         $data = json_decode($json, true);
         if (!is_array($data)) {
-            throw new MalformedJsonSyntax();
+            $result->errors[] = new ResultError(
+                JsonParsingError::MALFORMED_JSON_SYNTAX()
+            );
+            return $result;
         }
 
         if(!isset($data['data'])) {
-            throw new InvalidRequestPayloadStructure(['Expected "data" key in the root of json']);
+            $result->errors[] = new ResultError(
+                JsonParsingError::INVALID_PAYLOAD_STRUCTURE(),
+                'Expected "data" key in the root of json'
+            );
+            return $result;
         }
 
-        return $data['data'];
+        $result->data = $data['data'];
+        return $result;
     }
 }
